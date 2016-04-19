@@ -6,25 +6,37 @@ var topics = {
     Topics: [
         {
             "name": "topic name",
+            "description": "string",
             "keywords": ["string"],
             "books": [
                 {
-                    "id": "uuid",
-                    "name": "book name",
-                    "chapters": [
-                        {
-                            "index": "number",
-                            "title": "string",
-                            "subChapters": [
-                                {
-                                    "contentId": "content id",
-                                    "sequence": "number"
-                                }
-                            ]
-                        }
-                    ]
+                    "id": "book uuid"
                 }
             ]
+        }
+    ]
+}
+
+var book = {
+    "id": "uuid",
+    "name": "book name",
+    "description":"string",
+    "chapters": [
+        {
+            "id":"chapter uuid"
+        }
+    ]
+}
+
+var chapter = {
+    "id": "uuid",
+    "sequence":"number",
+    "index": "number",
+    "title": "string",
+    "subChapters": [
+        {
+            "contentId": "content id",
+            "sequence": "number"
         }
     ]
 }
