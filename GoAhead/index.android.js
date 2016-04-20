@@ -9,123 +9,89 @@ import React, {
     StyleSheet,
     Text,
     View,
-
-    TextInput,
-    TouchableWithoutFeedback,
-    TouchableOpacity,
-    WebView
-
-
+    ScrollView,
+    Dimensions
 } from 'react-native';
 
-
-var HEADER = '#3b5998';
-var BGWASH = 'rgba(255,255,255,0.8)';
-var DISABLED_WASH = 'rgba(255,255,255,0.25)';
-
-var TEXT_INPUT_REF = 'urlInput';
-var WEBVIEW_REF = 'webview';
-var DEFAULT_URL = 'https://m.facebook.com';
+const CARD_PREVIEW_WIDTH = 20
+const CARD_MARGIN = 5;
+const CARD_WIDTH = Dimensions.get('window').width - (CARD_MARGIN + CARD_PREVIEW_WIDTH) * 2;
 
 
-var html = `
-<!doctype html>
-<html>
-<head>
-    <title>Example Domain</title>
-
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style type="text/css">
-    body {
-        background-color: #f0f0f2;
-        margin: 0;
-        padding: 0;
-        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-    }
-    div {
-        width: 600px;
-        margin: 5em auto;
-        padding: 50px;
-        background-color: #fff;
-        border-radius: 1em;
-    }
-    a:link, a:visited {
-        color: #38488f;
-        text-decoration: none;
-    }
-    @media (max-width: 700px) {
-        body {
-            background-color: #fff;
-        }
-        div {
-            width: auto;
-            margin: 0 auto;
-            border-radius: 0;
-            padding: 1em;
-        }
-    }
-    </style>
-</head>
-
-<body>
-<div>
-    <h1>Example Domain</h1>
-    <p>This domain is established to be used for illustrative examples in documents. You may use this
-    domain in examples without prior coordination or asking for permission.</p>
-    <p><a href="http://www.iana.org/domains/example">More information...</a></p>
-</div>
-</body>
-</html>
-`
 class GoAhead extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <WebView style={{height: 100,width:300}}
-                         startInLoadingState={true}
-                         javaScriptEnabled={true}
-
-
-                         source={{uri:'https://github.com/astaxie/build-web-application-with-golang/tree/master/en'}}
-
-
-
-                />
-
-                <Text style={styles.welcome}>
-                    Welcome to React Native!
-                </Text>
-
-                <Text style={styles.instructions}>
-                    1. Shake or press menu button for dev menu
-                </Text>
-            </View>
+            <ScrollView
+                style={styles.container}
+                automaticallyAdjustInsets={false}
+                horizontal={true}
+                decelerationRate={0}
+                snapToInterval={CARD_WIDTH + CARD_MARGIN*2}
+                snapToAlignment="start"
+                contentContainerStyle={styles.content}>
+                <View style={styles.card}>
+                    <Text>Card 1</Text>
+                </View>
+                <View style={styles.card}>
+                    <Text>Card 2</Text>
+                </View>
+                <View style={styles.card}>
+                    <Text>Card 3</Text>
+                </View>
+                <View style={styles.card}>
+                    <Text>Card 4</Text>
+                </View>
+            </ScrollView>
         );
     }
 }
 
+
+/*
+ container: {
+ flex: 1,
+ justifyContent: 'center',
+ alignItems: 'center',
+ backgroundColor: '#F5FCFF',
+ flexDirection: 'row',
+ },
+ box: {
+ fontSize: 20,
+ textAlign: 'center',
+ margin: 1,
+ backgroundColor: '#35465c',
+ flex: 1,
+
+ },
+
+ roundImg: {
+ height: 100,
+ borderRadius: 50,
+ width: 100
+ }*/
+
+
 const styles = StyleSheet.create({
+    content: {
+        marginTop: 20,
+        paddingHorizontal: CARD_PREVIEW_WIDTH,
+        alignItems: 'center',
+        flex: 1,
+    },
+    card: {
+        flex: 1,
+        backgroundColor: '#ccc',
+        width: CARD_WIDTH,
+        margin: CARD_MARGIN,
+        height: CARD_WIDTH,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-        flexWrap: "nowrap",
-    },
+        backgroundColor: '#F5FCFF'
+    }
 });
 
 
