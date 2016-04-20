@@ -24,9 +24,9 @@ An isomorphic app for learning programming and algorithms.
 ## Technology (To be decided)
 
 - [x] React-Native for iOS and Android
-- [] Node.js in the middle-tier (Express, Hapi, or Koa)
-- [] Backend (Mongo, Postgress)
-- [] Firebase
+- [ ] Node.js in the middle-tier (Express, Hapi, or Koa)
+- [ ] Backend (Mongo, Postgress)
+- [ ] Firebase
 
 ## Libraries
 
@@ -44,7 +44,7 @@ An isomorphic app for learning programming and algorithms.
 
 - [maybe React Native FB SDK](https://github.com/facebook/react-native-fbsdk)
 
-# [UI]
+# UI
 
 ##Guides
 - [Google Design](- Google Material Design)
@@ -61,22 +61,23 @@ An isomorphic app for learning programming and algorithms.
 
 #TO DO
 ##Prototype 1
-- [] Render List View for Topics/Books/Chapters
-    - [] title & description
-- [] Render View for Content Blocks
-    - [] code block
-    - [] different headings
-    - [] paragraph
-    - [] images
-    - [] links
-    - [] attribution
-- [] Navigator
+- [ ] Render List View for Topics/Books/Chapters
+    - [ ] title & description
+- [ ] Render View for Content Blocks
+    - [ ] code block
+    - [ ] different headings
+    - [ ] paragraph
+    - [ ] images
+    - [ ] links
+    - [ ] attribution
+- [ ] Navigator
 
 ##Prototype 2
 
-- [] Search
-- [] Menu Bar
+- [ ] Search
+- [ ] Menu Bar
 
 
 #Other
--[] [A List of Style Guides, Brand Guidelines, and Front-End Frameworks](https://medium.com/@iamtec/a-list-of-style-guides-brand-guidelines-and-front-end-frameworks-e5bb62db91e5#.6c814lcfm)
+-[ ] [A List of Style Guides, Brand Guidelines, and Front-End Frameworks](https://medium.com/@iamtec/a-list-of-style-guides-brand-guidelines-and-front-end-frameworks-e5bb62db91e5#.6c814lcfm)
+-[ ] [Great email copy from companies](https://news.ycombinator.com/item?id=11469889)

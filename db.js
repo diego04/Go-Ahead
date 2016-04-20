@@ -2,6 +2,13 @@
  Database in firebase/mongo might look like this
  */
 
+
+/*
+    maybe change chapter&content to URL instead
+    pros: deploy faster
+    cons: pdf isn't built-in with webview component
+ */
+
 var topics = {
     Topics: [
         {
