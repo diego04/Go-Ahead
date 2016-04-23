@@ -1,54 +1,24 @@
 /*
- Database in firebase/mongo might look like this
+    let's users know if their app needs update
  */
 
+var appInfo = {
+    androidVersion: "float",
+    iosVersion: "float"
+}
 
 /*
- maybe change chapter&content to URL instead
- pros: deploy faster
- cons: pdf isn't built-in with webview component
+    User Flow:
+    1. List alcohol by volume (Main Screen)
+    2. After choosing from (#1), show brands that offer that type of drink
+    3. Then display products of that brand with that alcohol volume
+
+    //pass all parent information as props to children or clickable event to view some information inherited from parent
+
+    IE: Beer -> Guiness -> Guiness Draught / Guiness Stout / Guiness Red
  */
 
-var topics = {
-    Topics: [
-        {
-            "name": "topic name",
-            "description": "string",
-            "keywords": ["string"],
-            "books": [
-                {
-                    "id": "book uuid"
-                }
-            ]
-        }
-    ]
-}
-
-var book = {
-    "id": "uuid",
-    "name": "book name",
-    "description": "string",
-    "chapters": [
-        {
-            "id": "chapter uuid"
-        }
-    ]
-}
-
-var chapter = {
-    "id": "uuid",
-    "sequence": "number",
-    "index": "number",
-    "title": "string",
-    "subChapters": [
-        {
-            "contentId": "content id",
-            "sequence": "number"
-        }
-    ]
-}
-
-var x =
+var alcoholByVolume =
     [
         {"name": "Fruit juice (naturally occurring)", "min": 0, "max": 0.1},
         {"name": "Low-alcohol beer", "min": 0.05, "max": 1.2},
@@ -77,7 +47,7 @@ var x =
             "min": 6.5,
             "max": 7
         },
-        {"name": "Barley wine (strong ale)", "min": 8, "max": 15},
+        {"name": "Barley Wine (Strong Ale)", "min": 8, "max": 15},
         {
             "name": "Mead",
             "min": 8,
@@ -105,7 +75,7 @@ var x =
         },
         {"name": "Ruou (Vietnamese liquor)", "min": 27, "max": 45},
         {
-            "name": "Bitters",
+                "name": "Bitters",
             "min": 28,
             "max": 45
         },
@@ -168,19 +138,6 @@ var x =
         {"name": "Rectified spirit", "min": 95, "max": 96}
     ]
 
-/*
-put in console
- var x = document.getElementsByClassName("wikitable")[0]
- for (var i = 0, row; row = x.rows[i]; i++) {console.log(i+1)
- //iterate through rows
- //rows would be accessed using the "row" variable assigned in the for loop
- for (var j = 0, col; col = row.cells[j]; j++) {
- //iterate through columns
- console.log(col.innerHTML)
- //columns would be accessed using the "col" variable assigned in the for loop
- }
- }
- */
 
 var content = {
     "Content": {
@@ -196,19 +153,47 @@ var content = {
     }
 }
 
-var votes = {
-    "bookId": "uuid",
-    voters: ["user UUIDS"]
+/*
+    ignore this part
+
+
+var topics = {
+    Topics: [
+        {
+            "name": "topic name",
+            "description": "string",
+            "keywords": ["string"],
+            "books": [
+                {
+                    "id": "book uuid"
+                }
+            ]
+        }
+    ]
 }
 
-var users = {
-    "id": "uuid"
-    /*
-     TBC...
-     */
+var book = {
+    "id": "uuid",
+    "name": "book name",
+    "description": "string",
+    "chapters": [
+        {
+            "id": "chapter uuid"
+        }
+    ]
 }
 
-var appInfo = {
-    androidVersion: "float",
-    iosVersion: "float"
+var chapter = {
+    "id": "uuid",
+    "sequence": "number",
+    "index": "number",
+    "title": "string",
+    "subChapters": [
+        {
+            "contentId": "content id",
+            "sequence": "number"
+        }
+    ]
 }
+
+*/
