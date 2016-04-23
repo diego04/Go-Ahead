@@ -55,6 +55,28 @@ An isomorphic app for ....insert idea here?
 - [Sketch Resources](https://medium.com/sketch-app-sources)
 - For colors check adobe and yc comments
 
+##Persons
+- [Dribble UI People](https://www.quora.com/Which-UX-UI-designer-should-I-follow-on-Dribbble-Behance)
+- [Dribble UI People](https://www.designernews.co/stories/43079-ask-dn-best-uiux-folks-on-dribbble)
+
+##Color Pickers
+
+Should we go for turquoise red wedding palette?
+
+- [Google Material Design Colour Themes](https://getmdl.io/customize/index.html)
+- [Paletton](http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF)
+- [Adobe](https://color.adobe.com/create/color-wheel/)
+- [Colllor](http://colllor.com/)
+- [Cooolors](https://coolors.co/)
+- [Get UI colors](http://getuicolors.com/)
+- [Material Palette](http://www.materialpalette.com/)
+- [Flat UI Color Picker](http://www.flatuicolorpicker.com/)
+- [Material UI Colors/Icons/Flat](http://www.materialui.co/colors)
+- [Gradients](http://colorfulgradients.tumblr.com/)
+- [brand colors](http://brandcolors.net/)
+- [adaptive background html](http://briangonzalez.github.io/jquery.adaptive-backgrounds.js/)
+
+
 
 ## Software
 - Pick one from Pixate / Form / Proto / Facebook Origami
@@ -81,3 +103,4 @@ An isomorphic app for ....insert idea here?
 #Other
 -[ ] [A List of Style Guides, Brand Guidelines, and Front-End Frameworks](https://medium.com/@iamtec/a-list-of-style-guides-brand-guidelines-and-front-end-frameworks-e5bb62db91e5#.6c814lcfm)
 -[ ] [Great email copy from companies](https://news.ycombinator.com/item?id=11469889)
+
