@@ -108,7 +108,7 @@ class GoAhead extends Component {
     renderCategory(category) {
 
         return (
-            <View style={[styles.container,{backgroundColor:increase_brightness("#4A148C",brighten.next().value)}]}>
+            <View style={[styles.container,{backgroundColor:increase_brightness("#212121",brighten.next().value)}]}>
 
                 <View style={[styles.infoContainer]}>
                     <Text style={[styles.alcoholCategory]}numberOfLines={3}>
@@ -139,7 +139,7 @@ class GoAhead extends Component {
 
 const styles = StyleSheet.create({
     listView: {
-        backgroundColor: '#4770f0'
+        backgroundColor: '#546E7A'
     }
     , container: {
         flex: 1
@@ -147,9 +147,13 @@ const styles = StyleSheet.create({
         , flexDirection: 'row'
         , alignItems: 'center'
         , backgroundColor: 'red'
-        , borderRadius: 12
-        , margin: 12
+        , borderRadius: 4
+        , marginBottom: 8
+        , marginHorizontal: 12
         , paddingHorizontal: 0
+        , borderWidth: 1
+        , borderColor: '#280159'
+
     }
 
     , infoContainer: {
@@ -175,7 +179,7 @@ const styles = StyleSheet.create({
     }
     , percentContainer: {
         flex: 1
-        , backgroundColor: '#039BE5'
+        , backgroundColor: '#009688'
         , borderRadius: 12
         , borderWidth: 1
         , width: 55

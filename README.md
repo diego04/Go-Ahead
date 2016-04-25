@@ -1,5 +1,5 @@
 # Go-Ahead
-An isomorphic app for ....insert idea here?
+An isomorphic app for [◔̯◔ insert idea here?]
 
 ## Why React Native / React?
 
