@@ -20,6 +20,57 @@ import React, {
 
 import Categories from './vendor/categoryInfo'
 
+function randomColor() {
+    /*
+     choose all colors at the 500 level:
+     https://www.google.com/design/spec/style/color.html#color-color-palette
+     */
+    var color = ['#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3'
+        , '#03A9F4', '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39'
+        , '#FFC107', '#FF9800', '#FF5722', '#795548', '#9E9E9E'
+        , '#607D8B'
+    ]
+
+    return {backgroundColor: '#283593'}
+    //return {backgroundColor: color[Math.floor(Math.random() * ((color.length - 1)))]}
+
+}
+
+//http://stackoverflow.com/questions/6443990/javascript-calculate-brighter-colour
+function increase_brightness(hex, percent){
+    // strip the leading # if it's there
+    hex = hex.replace(/^\s*#|\s*$/g, '');
+
+    // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
+    if(hex.length == 3){
+        hex = hex.replace(/(.)/g, '$1$1');
+    }
+
+    var r = parseInt(hex.substr(0, 2), 16),
+        g = parseInt(hex.substr(2, 2), 16),
+        b = parseInt(hex.substr(4, 2), 16);
+
+    return '#' +
+        ((0|(1<<8) + r + (256 - r) * percent / 100).toString(16)).substr(1) +
+        ((0|(1<<8) + g + (256 - g) * percent / 100).toString(16)).substr(1) +
+        ((0|(1<<8) + b + (256 - b) * percent / 100).toString(16)).substr(1);
+}
+
+function* bright() {
+    var index = 0
+    while (true)
+        yield (index++ *.3);
+}
+
+function* idMaker() {
+    var index = 0;
+    while (true)
+        yield index++;
+}
+
+var gen = idMaker();
+var brighten = bright();
+
 
 class GoAhead extends Component {
 
@@ -57,40 +108,34 @@ class GoAhead extends Component {
     renderCategory(category) {
 
         return (
-            <View style={[styles.container,randomColor()]}>
-                <View style={[styles.rowItemLeft, styles.rowItem, randomColor()]}>
-                    <Text style={styles.percentage}>{category.min}</Text>
-                </View>
-                <View style={[styles.rowItemLeft, randomColor()]}>
-                    <Text style={styles.percentage}>{category.max}</Text>
-                </View>
+            <View style={[styles.container,{backgroundColor:increase_brightness("#4A148C",brighten.next().value)}]}>
 
-                <View style={[styles.rowItemRight, styles.rowItem]}>
-                    <Text style={styles.alcoholCategory} numberOfLines={5}>
-                        {category.name}
+                <View style={[styles.infoContainer]}>
+                    <Text style={[styles.alcoholCategory]}numberOfLines={3}>
+                        {gen.next().value} {category.name}
                     </Text>
                 </View>
+
+                <View style={[styles.percentsContainer]}>
+                    <View style={[styles.percentContainer,styles.maxContainer]}>
+                        <Text style={styles.percentage}>
+                            {category.max}
+                        </Text>
+                    </View>
+
+                    <View style={[styles.percentContainer, styles.minContainer]} >
+                        <Text style={styles.percentage}>
+                            {category.min}
+                        </Text>
+                    </View>
+                </View>
+
+
             </View>
 
         )
     }
 }
-
-function randomColor() {
-    /*
-     choose all colors at the 500 level:
-     https://www.google.com/design/spec/style/color.html#color-color-palette
-     */
-    var color = ['#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3'
-        , '#03A9F4', '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39'
-        , '#FFC107', '#FF9800', '#FF5722', '#795548', '#9E9E9E'
-        , '#607D8B'
-    ]
-
-    return {backgroundColor: color[Math.floor(Math.random() * ((color.length - 1)))]}
-
-}
-
 
 const styles = StyleSheet.create({
     listView: {
@@ -100,50 +145,61 @@ const styles = StyleSheet.create({
         flex: 1
         , justifyContent: 'center'
         , flexDirection: 'row'
-        , alignItems: 'stretch'
+        , alignItems: 'center'
         , backgroundColor: 'red'
-        //, padding: 15
-
+        , borderRadius: 12
+        , margin: 12
+        , paddingHorizontal: 0
     }
-    , rowItemLeft: {
+
+    , infoContainer: {
+        flex: 4
+    }
+
+    , alcoholCategory: {
+        color: 'white'
+        , textAlign: 'center'
+        , fontFamily: 'Cochin'
+        , fontSize: 20
+        , fontWeight: 'bold'
+    }
+    , percentsContainer: {
         flex: 1
         , justifyContent: 'center'
         , alignItems: 'center'
-        , flexDirection: 'row'
-        , backgroundColor: '#EBFFF8'
-        , paddingHorizontal: 15
+        , flexDirection: 'column'
+        , paddingHorizontal: 20
+        , backgroundColor: 'transparent'
+        , transform:[{translateY:7}]
 
     }
-
-    , rowItem: {
-        paddingVertical: 30
-
+    , percentContainer: {
+        flex: 1
+        , backgroundColor: '#039BE5'
+        , borderRadius: 12
+        , borderWidth: 1
+        , width: 55
+        , height: 55
+        , padding: 4
+        , borderColor: 'black'
+        , justifyContent: 'center'
+        , alignItems: 'center'
+        , flexDirection: 'row'
     }
     , percentage: {
-        fontSize: 20
-        , color: 'white'
-
-    },
-    alcoholCategory: {
         color: 'white'
-        , justifyContent: 'center'
-        , alignItems: 'center'
+        , textAlign: 'center'
         , flex: 1
-
-    }
-
-    , rowItemRight: {
-        flex: 4
-        , justifyContent: 'center'
-        , alignItems: 'center'
-        , margin: 15
-    }
-    , baseText: {
-        fontFamily: 'Cochin',
+        , fontFamily: 'Cochin'
+        , fontSize: 20
+        , fontWeight: 'bold'
     },
-    titleText: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    maxContainer: {
+        marginLeft: 20
+    }
+    ,minContainer: {
+        marginRight: 20
+        , transform:[{translateY:-15}]
     }
 });
 

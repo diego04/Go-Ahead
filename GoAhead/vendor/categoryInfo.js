@@ -33,7 +33,9 @@ var alcoholByVolume =
         {"name": "Kombucha", "min": 0.5, "max": 1.5},
         {
             "name": "Boza",
-            "min": 1
+            "min": 1,
+            "max": 1
+
         },
         {"name": "Chicha", "min": 1, "max": 11},
         {"name": "Cider", "min": 2, "max": 8.5},
@@ -43,7 +45,7 @@ var alcoholByVolume =
             "max": 12
         },
         {"name": "Alcopops", "min": 4, "max": 17.5},
-        {"name": "Malt liquor", "min": 5},
+        {"name": "Malt liquor", "min": 5, "max": 9},
         {
             "name": "Makgeolli",
             "min": 6.5,
@@ -62,7 +64,7 @@ var alcoholByVolume =
             "min": 14,
             "max": 25
         },
-        {"name": "Sake (rice wine)", "min": 15},
+        {"name": "Sake (rice wine)", "min": 15,"max": 20},
         {"name": "Liqueurs", "min": 15, "max": 55},
         {
             "name": "Fortified wine",
@@ -95,7 +97,7 @@ var alcoholByVolume =
             "min": 37.5,
             "max": 80
         },
-        {"name": "Ouzo", "min": 37.5},
+        {"name": "Ouzo", "min": 37.5,"max": 50},
         {"name": "Cachaça", "min": 38, "max": 54},
         {
             "name": "Sotol",
@@ -116,7 +118,7 @@ var alcoholByVolume =
             "min": 40,
             "max": 70
         },
-        {"name": "Centerbe (herb liqueur)", "min": 70},
+        {"name": "Centerbe (herb liqueur)", "min": 70, "max": 75},
         {"name": "Pálinka", "min": 42, "max": 86},
         {"name": "Rakia", "min": 42, "max": 86},
         {"name": "Absinthe", "min": 45, "max": 89.9},
