@@ -8,11 +8,13 @@ import React, {
     Component,
     StyleSheet,
     Text,
+    TouchableHighlight,
     View,
     ScrollView,
     Dimensions,
     Image,
-
+    Navigator,
+    ToastAndroid,
     ListView
 
 
@@ -37,12 +39,12 @@ function randomColor() {
 }
 
 //http://stackoverflow.com/questions/6443990/javascript-calculate-brighter-colour
-function increase_brightness(hex, percent){
+function increase_brightness(hex, percent) {
     // strip the leading # if it's there
     hex = hex.replace(/^\s*#|\s*$/g, '');
 
     // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
-    if(hex.length == 3){
+    if (hex.length == 3) {
         hex = hex.replace(/(.)/g, '$1$1');
     }
 
@@ -51,15 +53,15 @@ function increase_brightness(hex, percent){
         b = parseInt(hex.substr(4, 2), 16);
 
     return '#' +
-        ((0|(1<<8) + r + (256 - r) * percent / 100).toString(16)).substr(1) +
-        ((0|(1<<8) + g + (256 - g) * percent / 100).toString(16)).substr(1) +
-        ((0|(1<<8) + b + (256 - b) * percent / 100).toString(16)).substr(1);
+        ((0 | (1 << 8) + r + (256 - r) * percent / 100).toString(16)).substr(1) +
+        ((0 | (1 << 8) + g + (256 - g) * percent / 100).toString(16)).substr(1) +
+        ((0 | (1 << 8) + b + (256 - b) * percent / 100).toString(16)).substr(1);
 }
 
 function* bright() {
     var index = 0
     while (true)
-        yield (index++ *.3);
+        yield (index++ * .3);
 }
 
 function* idMaker() {
@@ -71,6 +73,49 @@ function* idMaker() {
 var gen = idMaker();
 var brighten = bright();
 
+
+class Navigation extends Component {
+    render() {
+        return (
+            <Navigator
+                initialRoute={{id:0}}
+                renderScene={this.renderScene.bind(this)}
+            />
+        )
+    }
+
+    renderScene(route, navigator) {
+        switch (route.id) {
+            case 0:
+                return (<GoAhead navigator={navigator} title="first"/>);
+            case 1:
+                return (<GoAhead2 navigator={navigator} title="first"/>);
+        }
+    }
+}
+
+
+class GoAhead2 extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <View style={{backgroundColor:'red',flex:1}}>
+
+            </View>
+        );
+    }
+
+}
+
+function onPressButton() {
+    console.log('tester2')
+    ToastAndroid.show('This is a toast with short duration', ToastAndroid.SHORT)
+    this.props.navigator.push({id: 1})
+}
 
 class GoAhead extends Component {
 
@@ -99,22 +144,46 @@ class GoAhead extends Component {
             <ListView
                 style={styles.listView}
                 dataSource={this.state.dataSource}
-                renderRow={this.renderCategory}
+                renderRow={this.renderCategory.bind(this)}
 
             />
         );
     }
 
-    renderCategory(category) {
 
+    onBackPress() {
+        console.log('backpress')
+        ToastAndroid.show('This is a toast with short duration', ToastAndroid.SHORT)
+        //this.props.navigator.push({id: 1})
+
+        const {navigator} = this.props
+        navigator.push({id: 1})
+
+
+    }
+
+    renderCategory(category) {
         return (
             <View style={[styles.container,{backgroundColor:increase_brightness("#212121",brighten.next().value)}]}>
 
-                <View style={[styles.infoContainer]}>
-                    <Text style={[styles.alcoholCategory]}numberOfLines={3}>
-                        {gen.next().value} {category.name}
-                    </Text>
+                <View style={[styles.numberContainer]}>
+                    <View style={[styles.indexContainer]}>
+                        <Text style={[{fontSize:17, color: 'white'}]}>
+                            {gen.next().value}
+                        </Text>
+                    </View>
                 </View>
+
+                <TouchableHighlight
+                    onPress={
+                    this.onBackPress.bind(this)
+
+
+                } style={[styles.infoContainer]}>
+                    <Text style={[styles.alcoholCategory]} numberOfLines={3}>
+                        {category.name}
+                    </Text>
+                </TouchableHighlight>
 
                 <View style={[styles.percentsContainer]}>
                     <View style={[styles.percentContainer,styles.maxContainer]}>
@@ -123,7 +192,7 @@ class GoAhead extends Component {
                         </Text>
                     </View>
 
-                    <View style={[styles.percentContainer, styles.minContainer]} >
+                    <View style={[styles.percentContainer, styles.minContainer]}>
                         <Text style={styles.percentage}>
                             {category.min}
                         </Text>
@@ -156,6 +225,12 @@ const styles = StyleSheet.create({
 
     }
 
+    , numberContainer: {
+        flex: 1
+        , justifyContent: 'center'
+        , flexDirection: 'row'
+        , alignItems: 'center'
+    }
     , infoContainer: {
         flex: 4
     }
@@ -174,8 +249,19 @@ const styles = StyleSheet.create({
         , flexDirection: 'column'
         , paddingHorizontal: 20
         , backgroundColor: 'transparent'
-        , transform:[{translateY:7}]
+        , transform: [{translateY: 7}]
 
+    }
+    , indexContainer: {
+        flex: 1
+        , backgroundColor: 'transparent'
+        , width: 55
+        , height: 55
+        , padding: 4
+        , borderColor: 'black'
+        , justifyContent: 'center'
+        , alignItems: 'center'
+        , flexDirection: 'row'
     }
     , percentContainer: {
         flex: 1
@@ -201,10 +287,10 @@ const styles = StyleSheet.create({
     maxContainer: {
         marginLeft: 20
     }
-    ,minContainer: {
+    , minContainer: {
         marginRight: 20
-        , transform:[{translateY:-15}]
+        , transform: [{translateY: -15}]
     }
 });
 
-AppRegistry.registerComponent('GoAhead', () => GoAhead);
+AppRegistry.registerComponent('GoAhead', () => Navigation);

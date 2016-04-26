@@ -1,6 +1,19 @@
 # Go-Ahead
 An isomorphic app for [◔̯◔ insert idea here?]
 
+#TO DO
+##Prototype 1
+- [ ] Render List View for Topics/Books/Chapters
+    - [ ] title & description
+- [ ] Render View for Content Blocks
+    - [ ] code block
+    - [ ] different headings
+    - [ ] paragraph
+    - [ ] images
+    - [ ] links
+    - [ ] attribution
+- [ ] Navigator
+
 ## Why React Native / React?
 
 - [x] Makes app logic easier. Check Facebook's blog about how it benefited their team [here](https://code.facebook.com/posts/1189117404435352/react-native-for-android-how-we-built-the-first-cross-platform-react-native-app/)
@@ -76,23 +89,8 @@ Should we go for turquoise red wedding palette?
 - [brand colors](http://brandcolors.net/)
 - [adaptive background html](http://briangonzalez.github.io/jquery.adaptive-backgrounds.js/)
 
-
-
 ## Software
 - Pick one from Pixate / Form / Proto / Facebook Origami
-
-#TO DO
-##Prototype 1
-- [ ] Render List View for Topics/Books/Chapters
-    - [ ] title & description
-- [ ] Render View for Content Blocks
-    - [ ] code block
-    - [ ] different headings
-    - [ ] paragraph
-    - [ ] images
-    - [ ] links
-    - [ ] attribution
-- [ ] Navigator
 
 ##Prototype 2
 
@@ -101,6 +99,7 @@ Should we go for turquoise red wedding palette?
 
 
 #Other
--[ ] [A List of Style Guides, Brand Guidelines, and Front-End Frameworks](https://medium.com/@iamtec/a-list-of-style-guides-brand-guidelines-and-front-end-frameworks-e5bb62db91e5#.6c814lcfm)
--[ ] [Great email copy from companies](https://news.ycombinator.com/item?id=11469889)
+
+-[ ] 1. [A List of Style Guides, Brand Guidelines, and Front-End Frameworks](https://medium.com/@iamtec/a-list-of-style-guides-brand-guidelines-and-front-end-frameworks-e5bb62db91e5#.6c814lcfm)
+-[ ] 2. [Great email copy from companies](https://news.ycombinator.com/item?id=11469889)
 
