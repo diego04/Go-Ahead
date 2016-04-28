@@ -33,8 +33,8 @@ function randomColor() {
         , '#607D8B'
     ]
 
-    return {backgroundColor: '#283593'}
-    //return {backgroundColor: color[Math.floor(Math.random() * ((color.length - 1)))]}
+    //return {backgroundColor: '#283593'}
+    return  color[Math.floor(Math.random() * ((color.length - 1)))]
 
 }
 
@@ -162,9 +162,13 @@ class GoAhead extends Component {
 
     }
 
+
     renderCategory(category) {
         return (
-            <View style={[styles.container,{backgroundColor:increase_brightness("#212121",brighten.next().value)}]}>
+            <View style={[styles.container,{backgroundColor:increase_brightness("#212121",brighten.next().value)},{
+    borderLeftWidth: 5,
+    borderLeftColor: randomColor(),
+  }]}>
 
                 <View style={[styles.numberContainer]}>
                     <View style={[styles.indexContainer]}>
@@ -216,12 +220,10 @@ const styles = StyleSheet.create({
         , flexDirection: 'row'
         , alignItems: 'center'
         , backgroundColor: 'red'
-        , borderRadius: 4
         , marginBottom: 8
         , marginHorizontal: 12
         , paddingHorizontal: 0
         , borderWidth: 1
-        , borderColor: '#280159'
 
     }
 
