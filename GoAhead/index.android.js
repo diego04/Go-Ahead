@@ -34,7 +34,7 @@ function randomColor() {
     ]
 
     //return {backgroundColor: '#283593'}
-    return  color[Math.floor(Math.random() * ((color.length - 1)))]
+    return color[Math.floor(Math.random() * ((color.length - 1)))]
 
 }
 
@@ -70,8 +70,22 @@ function* idMaker() {
         yield index++;
 }
 
+function* alternateShade() {
+    var index = 0;
+    while (true) {
+        if (index % 2 == 0) {
+            index++
+            yield 'white';
+        } else {
+            index++
+            yield '#F4F4F4';
+        }
+    }
+}
+
 var gen = idMaker();
 var brighten = bright();
+var rowColor = alternateShade();
 
 
 class Navigation extends Component {
@@ -165,14 +179,14 @@ class GoAhead extends Component {
 
     renderCategory(category) {
         return (
-            <View style={[styles.container,{backgroundColor:increase_brightness("#212121",brighten.next().value)},{
+            <View style={[styles.container,{backgroundColor:rowColor.next().value},{
     borderLeftWidth: 5,
     borderLeftColor: randomColor(),
   }]}>
 
                 <View style={[styles.numberContainer]}>
                     <View style={[styles.indexContainer]}>
-                        <Text style={[{fontSize:17, color: 'white'}]}>
+                        <Text style={[{fontSize:17, color: 'black'}]}>
                             {gen.next().value}
                         </Text>
                     </View>
@@ -238,7 +252,7 @@ const styles = StyleSheet.create({
     }
 
     , alcoholCategory: {
-        color: 'white'
+        color: 'grey'
         , textAlign: 'center'
         , fontFamily: 'Cochin'
         , fontSize: 20
@@ -267,7 +281,7 @@ const styles = StyleSheet.create({
     }
     , percentContainer: {
         flex: 1
-        , backgroundColor: '#009688'
+        , backgroundColor: 'transparent'
         , borderRadius: 12
         , borderWidth: 1
         , width: 55
@@ -279,7 +293,7 @@ const styles = StyleSheet.create({
         , flexDirection: 'row'
     }
     , percentage: {
-        color: 'white'
+        color: 'black'
         , textAlign: 'center'
         , flex: 1
         , fontFamily: 'Cochin'
