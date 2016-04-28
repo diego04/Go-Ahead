@@ -17,10 +17,10 @@ import React, {
     ToastAndroid,
     ListView
 
-
 } from 'react-native';
 
 import Categories from './vendor/categoryInfo'
+var Icon = require('react-native-vector-icons/FontAwesome');
 
 function randomColor() {
     /*
@@ -75,13 +75,14 @@ function* alternateShade() {
     while (true) {
         if (index % 2 == 0) {
             index++
-            yield 'white';
+            yield '#131829';
         } else {
             index++
-            yield '#F4F4F4';
+            yield '#131829';
         }
     }
 }
+
 
 var gen = idMaker();
 var brighten = bright();
@@ -179,44 +180,29 @@ class GoAhead extends Component {
 
     renderCategory(category) {
         return (
-            <View style={[styles.container,{backgroundColor:rowColor.next().value},{
-    borderLeftWidth: 5,
-    borderLeftColor: randomColor(),
-  }]}>
-
-                <View style={[styles.numberContainer]}>
-                    <View style={[styles.indexContainer]}>
-                        <Text style={[{fontSize:17, color: 'black'}]}>
-                            {gen.next().value}
-                        </Text>
-                    </View>
-                </View>
+            <View style={[styles.container,{backgroundColor:rowColor.next().value},
+              { borderLeftWidth: 5,
+                borderLeftColor: randomColor()
+                }]}>
 
                 <TouchableHighlight
-                    onPress={
-                    this.onBackPress.bind(this)
+                    onPress={this.onBackPress.bind(this)} style={[styles.infoContainer]}>
 
 
-                } style={[styles.infoContainer]}>
-                    <Text style={[styles.alcoholCategory]} numberOfLines={3}>
-                        {category.name}
-                    </Text>
+                    <View style={{margin:20}}>
+                        <Text style={[styles.alcoholCategory]} numberOfLines={3}>
+                            {category.name}
+                        </Text>
+                        <Text style={{marginTop:10,color:'white',fontSize:15}}>
+                            {category.min} - {category.max} %
+                        </Text>
+                    </View>
+
                 </TouchableHighlight>
 
-                <View style={[styles.percentsContainer]}>
-                    <View style={[styles.percentContainer,styles.maxContainer]}>
-                        <Text style={styles.percentage}>
-                            {category.max}
-                        </Text>
-                    </View>
-
-                    <View style={[styles.percentContainer, styles.minContainer]}>
-                        <Text style={styles.percentage}>
-                            {category.min}
-                        </Text>
-                    </View>
+                <View style={[{marginRight:10}]}>
+                    <Icon name="angle-right" size={30} color="#BBBBBB"/>
                 </View>
-
 
             </View>
 
@@ -224,9 +210,25 @@ class GoAhead extends Component {
     }
 }
 
+/*
+ <View style={[styles.percentsContainer]}>
+ <View style={[styles.percentContainer,styles.maxContainer]}>
+ <Text style={styles.percentage}>
+ {category.max}
+ </Text>
+ </View>
+
+ <View style={[styles.percentContainer, styles.minContainer]}>
+ <Text style={styles.percentage}>
+ {category.min}
+ </Text>
+ </View>
+ </View>
+ */
+
 const styles = StyleSheet.create({
     listView: {
-        backgroundColor: '#546E7A'
+        backgroundColor: '#23293F'
     }
     , container: {
         flex: 1
@@ -234,8 +236,8 @@ const styles = StyleSheet.create({
         , flexDirection: 'row'
         , alignItems: 'center'
         , backgroundColor: 'red'
-        , marginBottom: 8
-        , marginHorizontal: 12
+        , marginBottom: 4
+        , marginHorizontal: 6
         , paddingHorizontal: 0
         , borderWidth: 1
 
@@ -252,8 +254,8 @@ const styles = StyleSheet.create({
     }
 
     , alcoholCategory: {
-        color: 'grey'
-        , textAlign: 'center'
+        color: '#CCCCCC'
+        , textAlign: 'left'
         , fontFamily: 'Cochin'
         , fontSize: 20
         , fontWeight: 'bold'
