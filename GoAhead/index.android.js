@@ -116,9 +116,28 @@ class GoAhead2 extends Component {
         super(props);
     }
 
+
+    onBackPress() {
+        const {navigator} = this.props
+        navigator.pop()
+    }
+
     render() {
         return (
             <View style={{backgroundColor:'red',flex:1}}>
+                <TouchableHighlight
+                    onPress={this.onBackPress.bind(this)} style={[styles.infoContainer]}>
+
+
+                    <View style={{margin:20}}>
+                        <Text style={[styles.alcoholCategory]} numberOfLines={3}>
+                            Back
+                        </Text>
+                        <Text style={{marginTop:10,color:'white',fontSize:15}}>
+                            Back %
+                        </Text>
+                    </View>
+                </TouchableHighlight>
 
             </View>
         );
@@ -173,7 +192,6 @@ class GoAhead extends Component {
 
         const {navigator} = this.props
         navigator.push({id: 1})
-
 
     }
 
