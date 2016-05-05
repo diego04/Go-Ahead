@@ -1,0 +1,8 @@
+#https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml
+#contains auto scaling information
+
+runtime: nodejs
+vm: true
+
+skip_files:
+  - ^(.*/)?.*/node_modules/.*$

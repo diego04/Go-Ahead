@@ -95,6 +95,12 @@ class Navigation extends Component {
             <Navigator
                 initialRoute={{id:0}}
                 renderScene={this.renderScene.bind(this)}
+                navigationBar={
+                    <Navigator.NavigationBar
+                        style={ styles.nav }
+                        routeMapper={ NavigationBarRouteMapper }
+                    />
+                }
             />
         )
     }
@@ -108,6 +114,38 @@ class Navigation extends Component {
         }
     }
 }
+
+var NavigationBarRouteMapper = {
+    LeftButton(route, navigator, index, navState) {
+        if (index > 0) {
+            return (
+                <TouchableHighlight
+                    onPress={() => { if (index > 0) { navigator.pop() } }}>
+                    <Text>
+                        Back
+                    </Text>
+                </TouchableHighlight>)
+        }
+        else {
+            return null
+        }
+    },
+    RightButton(route, navigator, index, navState) {
+        return (
+            <TouchableHighlight>
+                <Text>
+                    Next
+                </Text>
+            </TouchableHighlight>)
+    },
+    Title(route, navigator, index, navState) {
+        return (
+            <Text>
+                TITLE
+            </Text>
+        )
+    }
+};
 
 
 class GoAhead2 extends Component {
@@ -134,7 +172,7 @@ class GoAhead2 extends Component {
                             Back
                         </Text>
                         <Text style={{marginTop:10,color:'white',fontSize:15}}>
-                            Back %
+                            Back
                         </Text>
                     </View>
                 </TouchableHighlight>
@@ -145,11 +183,6 @@ class GoAhead2 extends Component {
 
 }
 
-function onPressButton() {
-    console.log('tester2')
-    ToastAndroid.show('This is a toast with short duration', ToastAndroid.SHORT)
-    this.props.navigator.push({id: 1})
-}
 
 class GoAhead extends Component {
 
@@ -228,24 +261,14 @@ class GoAhead extends Component {
     }
 }
 
-/*
- <View style={[styles.percentsContainer]}>
- <View style={[styles.percentContainer,styles.maxContainer]}>
- <Text style={styles.percentage}>
- {category.max}
- </Text>
- </View>
-
- <View style={[styles.percentContainer, styles.minContainer]}>
- <Text style={styles.percentage}>
- {category.min}
- </Text>
- </View>
- </View>
- */
 
 const styles = StyleSheet.create({
-    listView: {
+
+    nav: {
+        backgroundColor: 'red'
+        , flex: 1
+    }
+    , listView: {
         backgroundColor: '#23293F'
     }
     , container: {
